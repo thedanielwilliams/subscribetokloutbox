@@ -38,10 +38,11 @@
             Consectetur sit semper vitae mattis aliquam.  
             Consectetur sit semper vitae mattis aliquam. 
         </p>
-        <form action="/your-server-endpoint" method="POST" class="subscribe-form">
+        <form id="subscribeForm" class="subscribe-form">
             <input type="email" id="email-subscribe" name="email" placeholder="Enter your email address" required>
             <button type="submit">Subscribe for free</button>
         </form>
+        <p id="form-message" style="margin-top: 10px; font-weight: bold;"></p>
     </div>
 
     <div class="hero-image">
@@ -122,5 +123,50 @@
     </footer>
 
 
+    <script>
+        document.getElementById('subscribeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('email-subscribe');
+            const messageEl = document.getElementById('form-message');
+            const button = this.querySelector('button');
+            
+            const email = emailInput.value;
+            
+            // Disable button and show loading state
+            button.disabled = true;
+            button.textContent = 'Subscribing...';
+            messageEl.textContent = '';
+            
+            try {
+                const response = await fetch('/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    messageEl.textContent = 'Thanks for subscribing!';
+                    messageEl.style.color = 'green';
+                    emailInput.value = '';
+                } else {
+                    messageEl.textContent = data.error || 'Something went wrong. Please try again.';
+                    messageEl.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageEl.textContent = 'Network error. Please try again.';
+                messageEl.style.color = 'red';
+            } finally {
+                // Re-enable button
+                button.disabled = false;
+                button.textContent = 'Subscribe for free';
+            }
+        });
+    </script>
 </body>
 </html>

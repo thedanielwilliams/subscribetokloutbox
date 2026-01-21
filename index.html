@@ -147,7 +147,16 @@
                     body: JSON.stringify({ email })
                 });
                 
-                const data = await response.json();
+                let data;
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    data = await response.json();
+                } else {
+                    // If response is not JSON (e.g. 404/500 HTML page), read text
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                }
                 
                 if (response.ok) {
                     messageEl.textContent = 'Thanks for subscribing!';
@@ -159,7 +168,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                messageEl.textContent = 'Network error. Please try again.';
+                messageEl.textContent = error.message || 'Network error. Please try again.';
                 messageEl.style.color = 'red';
             } finally {
                 // Re-enable button

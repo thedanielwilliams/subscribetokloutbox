@@ -8,7 +8,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Initialize Resend with API Key
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendApiKey = process.env.RESEND_API_KEY;
+if (!resendApiKey) {
+    console.warn('WARNING: RESEND_API_KEY is missing. Email sending will fail.');
+}
+const resend = new Resend(resendApiKey);
 
 // Middleware
 app.use(cors());

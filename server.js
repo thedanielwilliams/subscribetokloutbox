@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Initialize Resend with API Key
-const resendApiKey = process.env.RESEND_API_KEY;
+const resendApiKey = 're_17M3e9zr_KLRAiRA61EKDXC5jkrXnSNEc';
 if (!resendApiKey) {
     console.warn('WARNING: RESEND_API_KEY is missing. Email sending will fail.');
 }

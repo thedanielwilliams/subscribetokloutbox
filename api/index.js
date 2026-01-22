@@ -42,27 +42,24 @@ app.post('/subscribe', async (req, res) => {
             to: [email],
             subject: 'Welcome to Kloutbox! 🎉',
             html: `
-                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; background-color:#f9f5ef; color:#1f1f1f; padding:32px;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width:640px; margin:0 auto; background:#ffffff; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.06);">
+                <div style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; background-color:#f9f5ef; color:#1f1f1f; padding:32px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.06);">
                         <tr>
-                            <td style="padding:28px 32px; border-bottom:1px solid #f0e9de;">
-                                <div style="font-size:20px; font-weight:700; letter-spacing:.2px;">Kloutbox</div>
-                            </td>
+                            <td style="padding:28px 32px; border-bottom:1px solid #f0e9de; font-weight:700;">Kloutbox</td>
                         </tr>
                         <tr>
                             <td style="padding:32px;">
-                                <h1 style="margin:0 0 12px 0; font-size:28px; line-height:1.25;">Welcome to the chatty corner of the internet 👋</h1>
-                                <p style="margin:0 0 16px 0; font-size:16px; line-height:1.6;">We’re thrilled to have you. You’ll receive thoughtfully curated stories, trends, and talkouts — crafted to spark conversations and help brands build experiences people remember.</p>
-                                <p style="margin:0 0 16px 0; font-size:16px; line-height:1.6;">As a subscriber, expect regular updates, behind‑the‑scenes notes, and highlights from our community. If you ever want to revisit us, you can always find us at <a href="https://www.kloutbox.com" style="color:#d74c2f; text-decoration:none; font-weight:600;">kloutbox.com</a>.</p>
-                                <div style="margin:24px 0;">
-                                    <a href="https://www.kloutbox.com" style="display:inline-block; background:#d74c2f; color:#ffffff; text-decoration:none; padding:12px 20px; border-radius:8px; font-weight:600;">Explore Kloutbox</a>
-                                </div>
-                                <p style="margin:0; font-size:14px; color:#5b5b5b; line-height:1.6;">If this wasn’t you, simply ignore this email. No action is required.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding:20px 32px; border-top:1px solid #f0e9de; font-size:13px; color:#6a6a6a;">
-                                Sent by Kloutbox • <a href="https://www.kloutbox.com" style="color:#d74c2f; text-decoration:none;">kloutbox.com</a>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">At KloutBox, we tell stories that feel familiar, even when they aren’t yours. Stories about love that didn’t survive. Faith that complicated things. Growth that costs something. Choosing yourself when everyone expected you to stay.</p>
+                                <p style="margin:0 0 10px 0; font-size:16px; line-height:1.7;">We don’t chase trends.</p>
+                                <p style="margin:0 0 10px 0; font-size:16px; line-height:1.7;">We don’t preach.</p>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">We don’t perform.</p>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">We listen. We write. We leave space.</p>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">Every now and then, we’ll send you a story. One that sits quietly with you. One that might make you pause. One that reminds you that you’re not strange for feeling the way you do, you’re human.</p>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">That’s all we promise.</p>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">Thanks for finding your way here.</p>
+                                <p style="margin:0 0 18px 0; font-size:16px; line-height:1.7;">You’re in good company.</p>
+                                <p style="margin:0 0 24px 0; font-size:16px; line-height:1.7;">Cheers.</p>
+                                <p style="margin:0; font-size:16px; line-height:1.7; font-weight:700;">Williams.</p>
                             </td>
                         </tr>
                     </table>

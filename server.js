@@ -39,7 +39,7 @@ app.post('/subscribe', async (req, res) => {
     try {
         // 1. Send Welcome Email to the subscriber
         const { data, error } = await resend.emails.send({
-            from: 'Kloutbox <danielonikola@kloutbox.com>',
+            from: 'Williams from Kloutbox <danielonikola@kloutbox.com>',
             to: [email],
             subject: 'Welcome to Kloutbox! 🎉',
             html: `
@@ -81,7 +81,7 @@ app.post('/subscribe', async (req, res) => {
         // 2. Notify admin (danielonikola@kloutbox.com)
         try {
             await resend.emails.send({
-                from: 'Kloutbox <danielonikola@kloutbox.com>',
+                from: 'Williams from Kloutbox <danielonikola@kloutbox.com>',
                 to: ['danielonikola@kloutbox.com'],
                 subject: 'New Kloutbox Subscriber',
                 html: `

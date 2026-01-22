@@ -40,14 +40,33 @@ app.post('/subscribe', async (req, res) => {
         const { data, error } = await resend.emails.send({
             from: 'Kloutbox <danielonikola@kloutbox.com>',
             to: [email],
-            subject: 'Welcome to Kloutbox!',
+            subject: 'Welcome to Kloutbox! 🎉',
             html: `
-                <h1>Welcome to Kloutbox!</h1>
-                <p>Thank you for subscribing to our newsletter. We are excited to have you on board!</p>
-                <p>Stay tuned for updates on current happenings, trends, and talkouts.</p>
-                <br>
-                <p>Best regards,</p>
-                <p>The Kloutbox Team</p>
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; background-color:#f9f5ef; color:#1f1f1f; padding:32px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width:640px; margin:0 auto; background:#ffffff; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.06);">
+                        <tr>
+                            <td style="padding:28px 32px; border-bottom:1px solid #f0e9de;">
+                                <div style="font-size:20px; font-weight:700; letter-spacing:.2px;">Kloutbox</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:32px;">
+                                <h1 style="margin:0 0 12px 0; font-size:28px; line-height:1.25;">Welcome to the chatty corner of the internet 👋</h1>
+                                <p style="margin:0 0 16px 0; font-size:16px; line-height:1.6;">We’re thrilled to have you. You’ll receive thoughtfully curated stories, trends, and talkouts — crafted to spark conversations and help brands build experiences people remember.</p>
+                                <p style="margin:0 0 16px 0; font-size:16px; line-height:1.6;">As a subscriber, expect regular updates, behind‑the‑scenes notes, and highlights from our community. If you ever want to revisit us, you can always find us at <a href="https://www.kloutbox.com" style="color:#d74c2f; text-decoration:none; font-weight:600;">kloutbox.com</a>.</p>
+                                <div style="margin:24px 0;">
+                                    <a href="https://www.kloutbox.com" style="display:inline-block; background:#d74c2f; color:#ffffff; text-decoration:none; padding:12px 20px; border-radius:8px; font-weight:600;">Explore Kloutbox</a>
+                                </div>
+                                <p style="margin:0; font-size:14px; color:#5b5b5b; line-height:1.6;">If this wasn’t you, simply ignore this email. No action is required.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:20px 32px; border-top:1px solid #f0e9de; font-size:13px; color:#6a6a6a;">
+                                Sent by Kloutbox • <a href="https://www.kloutbox.com" style="color:#d74c2f; text-decoration:none;">kloutbox.com</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             `,
         });
 
@@ -63,8 +82,15 @@ app.post('/subscribe', async (req, res) => {
             await resend.emails.send({
                 from: 'Kloutbox <danielonikola@kloutbox.com>',
                 to: ['danielonikola@kloutbox.com'],
-                subject: 'New Subscriber!',
-                html: `<p>New subscriber joined: <strong>${email}</strong></p>`,
+                subject: 'New Kloutbox Subscriber',
+                html: `
+                    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;">
+                        <p style="font-size:16px;">A new subscriber just joined the list:</p>
+                        <p style="font-size:18px; font-weight:700;">${email}</p>
+                        <p style="font-size:14px; color:#666;">Timestamp: ${new Date().toISOString()}</p>
+                        <p><a href="https://www.kloutbox.com" style="color:#d74c2f; text-decoration:none; font-weight:600;">Visit kloutbox.com</a></p>
+                    </div>
+                `,
             });
         } catch (adminError) {
             console.error('Error sending admin notification:', adminError);

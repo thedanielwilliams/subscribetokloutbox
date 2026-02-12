@@ -46,7 +46,9 @@ app.post('/subscribe', async (req, res) => {
                 <div style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; background-color:#f9f5ef; color:#1f1f1f; padding:32px;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.06);">
                         <tr>
-                            <td style="padding:28px 32px; border-bottom:1px solid #f0e9de; font-weight:700;">Kloutbox</td>
+                            <td style="padding:28px 32px; border-bottom:1px solid #f0e9de; font-weight:700;">
+                                <img src="https://www.kloutbox.com/KLOUTBOX%20FULL%20LOGO%201.png" alt="Kloutbox" width="140" style="display:block; border:0;">
+                            </td>
                         </tr>
                         <tr>
                             <td style="padding:32px;">

@@ -35,6 +35,7 @@
         </p>
         <form id="subscribeForm" class="subscribe-form">
             <input type="email" id="email-subscribe" name="email" placeholder="Enter your email address" required>
+            <input type="text" id="referred-by" name="referredBy" placeholder="Who referred you? (Optional)">
             <button type="submit">Subscribe for free</button>
         </form>
         <p id="form-message" style="margin-top: 10px; font-weight: bold;"></p>
@@ -102,10 +103,12 @@
             e.preventDefault();
             
             const emailInput = document.getElementById('email-subscribe');
+            const referredByInput = document.getElementById('referred-by');
             const messageEl = document.getElementById('form-message');
             const button = this.querySelector('button');
             
             const email = emailInput.value;
+            const referredBy = referredByInput.value;
             
             // Disable button and show loading state
             button.disabled = true;
@@ -118,7 +121,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email })
+                    body: JSON.stringify({ email, referredBy })
                 });
                 
                 let data;
@@ -136,6 +139,7 @@
                     messageEl.textContent = 'Thank you. Williams just sent you an email.';
                     messageEl.style.color = 'green';
                     emailInput.value = '';
+                    referredByInput.value = '';
                 } else {
                     messageEl.textContent = data.error || 'Something went wrong. Please try again.';
                     messageEl.style.color = 'red';

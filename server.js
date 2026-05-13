@@ -28,9 +28,8 @@ app.use((req, res, next) => {
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
-// Subscribe endpoint
 app.post('/subscribe', async (req, res) => {
-    const { email } = req.body;
+    const { email, referredBy } = req.body;
 
     if (!email) {
         return res.status(400).json({ error: 'Email is required' });
@@ -79,6 +78,7 @@ app.post('/subscribe', async (req, res) => {
 
         // 2. Notify admin (danielonikola@kloutbox.com)
         try {
+            const referralInfo = referredBy ? `<p style="font-size:16px;"><strong>Referred by:</strong> ${referredBy}</p>` : '';
             await resend.emails.send({
                 from: 'Williams from Kloutbox <danielonikola@kloutbox.com>',
                 to: ['danielonikola@kloutbox.com'],
@@ -87,6 +87,7 @@ app.post('/subscribe', async (req, res) => {
                     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;">
                         <p style="font-size:16px;">A new subscriber just joined the list:</p>
                         <p style="font-size:18px; font-weight:700;">${email}</p>
+                        ${referralInfo}
                         <p style="font-size:14px; color:#666;">Timestamp: ${new Date().toISOString()}</p>
                         <p><a href="https://www.kloutbox.com" style="color:#d74c2f; text-decoration:none; font-weight:600;">Visit kloutbox.com</a></p>
                     </div>
